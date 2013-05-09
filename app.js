@@ -1,11 +1,12 @@
 var express = require('express'),
     graph = require('fbgraph'),
+    settings = require('./settings'),
     app = express();
 
 var config = {
-    APP_ID: process.env.APP_ID,
-    APP_SECRET: process.env.APP_SECRET,
-    redirect_url: process.env.APP_URL,
+    APP_ID: process.env.APP_ID || settings.APP_ID,
+    APP_SECRET: process.env.APP_SECRET || settings.APP_SECRET,
+    APP_URL: process.env.APP_URL || settings.APP_URL,
     SCOPE: '',
     PORT: process.env.PORT || 3000
 };
