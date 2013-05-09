@@ -1,0 +1,18 @@
+body {
+  background: #f1f1f1;
+  font: normal 100% sans-serif;
+  position: relative;
+}
+
+#login {
+  background: url("/images/fb_button.png") no-repeat;
+  display: block;
+  height: 141px;
+  margin: 0 auto;
+  margin: -70px 0 0 -287px;
+  text-indent: -9999em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 574px;
+}
