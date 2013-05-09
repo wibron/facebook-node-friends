@@ -1,4 +1,5 @@
 var express = require('express'),
+    expressLayouts = require('express-ejs-layouts'),
     graph = require('fbgraph'),
     settings = require('./settings'),
     app = express();
@@ -13,10 +14,19 @@ var config = {
 
 app.configure(function() {
     app.set('view engine', 'ejs');
+    app.set('views', __dirname + '/views');
+    app.set('layout', 'layout');
+    app.use(expressLayouts);
+    app.use(app.router);
+    app.use(express.static(__dirname + '/public'));
+});
+
+app.configure('development', function(){
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
 app.get('/', function(req, res) {
-    res.render('index', { title: 'Facebook app' })
+    res.render('index');
 });
 
 app.listen(config.PORT, function() {
