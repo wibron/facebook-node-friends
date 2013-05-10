@@ -1,0 +1,24 @@
+<script>
+    function FriendsCtrl($scope) {
+        $scope.friends = <%- friends %>;
+        $scope.currentPage = 0;
+        $scope.itemsPerPage = 30;
+        $scope.totalPages = function() {
+            return Math.ceil($scope.friends.length / $scope.itemsPerPage);
+        }
+    }
+</script>
+
+<div class="container" ng-controller="FriendsCtrl">
+
+    <input class="search" type="text" placeholder="Search friends" ng-model="searchFilter">
+
+    <ul class="friends">
+        <li class="friends__box" ng-repeat="friend in friends | filter: searchFilter | orderBy: 'first_name' | limitTo: itemsPerPage">
+            <a href="https://facebook.com/profile.php?id={{friend.id}}">
+                {{ friend.first_name }} {{ friend.last_name }}
+            </a>
+        </li>
+    </ul>
+
+</div>
