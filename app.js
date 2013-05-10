@@ -55,6 +55,12 @@ app.get('/auth', function(req, res) {
 
 });
 
+app.get('/friends', function(req, res) {
+    graph.get('me/friends?fields=picture,first_name,last_name', function(err, fbRes) {
+        res.render('friends', { friends: JSON.stringify(fbRes.data) });
+    });
+});
+
 app.listen(config.PORT, function() {
     console.log('Express server running on port ' + config.PORT);
 });
