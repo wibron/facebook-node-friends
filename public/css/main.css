@@ -39,7 +39,16 @@ h1 {
   top: 50%;
   left: 50%;
   width: 574px;
+  -webkit-transition: opacity .2s ease;
   -webkit-animation: fadein 1s ease-out;
+}
+
+#login:active {
+  top: 50.05%;
+}
+
+#login:hover, #login:active {
+  opacity: .9;
 }
 
 .container {
