@@ -13,4 +13,11 @@
         };
     });
 
+    fb.filter('startPosition', function() {
+        return function(input, position) {
+            position = parseInt(position, 10);
+            return input.slice(position);
+        }
+    });
+
 }());

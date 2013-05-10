@@ -16,8 +16,14 @@
 
     <input class="search" type="text" placeholder="Search friends" ng-model="searchFilter">
 
+    <div class="paging">
+        <button class="paging__button paging--prev" ng-disabled="currentPage == 0" ng-click="currentPage = currentPage - 1">Previous</button>
+        <p>{{currentPage + 1 }} / {{totalPages()}}</p>
+        <button class="paging__button paging--next" ng-disabled="currentPage >= (friends.length / itemsPerPage) -1" ng-click="currentPage = currentPage + 1">Next</button>
+    </div>
+
     <ul class="friends">
-        <li class="friends__box" ng-repeat="friend in friends | filter: searchFilter | orderBy: 'first_name' | limitTo: itemsPerPage">
+        <li class="friends__box" ng-repeat="friend in friends | filter: searchFilter | orderBy: 'first_name' | startPosition: currentPage * itemsPerPage | limitTo: itemsPerPage">
             <a href="https://facebook.com/profile.php?id={{friend.id}}">
                 <img src="/images/user.png" profilepicture="{{friend.picture.data.url}}" alt="{{friend.first_name}} {{friend.last_name}}">
                 {{ friend.first_name }} {{ friend.last_name }}
