@@ -22,11 +22,37 @@ app.configure(function() {
 });
 
 app.configure('development', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
 app.get('/', function(req, res) {
     res.render('index');
+});
+
+app.get('/auth', function(req, res) {
+    if (!req.query.code) {
+
+        var authURL = graph.getOauthUrl({
+            'client_id': config.APP_ID,
+            'redirect_uri': config.APP_URL + '/auth',
+            'scope': config.SCOPE
+        });
+
+        if (!req.query.error)
+            res.redirect(authURL);
+
+        return;
+    }
+
+    graph.authorize({
+        'client_id': config.APP_ID,
+        'redirect_uri': config.APP_URL + '/auth',
+        'client_secret': config.APP_SECRET,
+        'code': req.query.code
+    }, function (err, fbRes) {
+        res.redirect('/friends');
+    });
+
 });
 
 app.listen(config.PORT, function() {
