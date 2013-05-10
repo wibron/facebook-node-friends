@@ -18,6 +18,7 @@ app.configure(function() {
     app.set('layout', 'layout');
     app.use(expressLayouts);
     app.use(app.router);
+    app.use(express.compress());
     app.use(express.static(__dirname + '/public'));
 });
 
