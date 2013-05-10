@@ -1,6 +1,7 @@
 body {
   background: #f7f7f7;
   font: normal 100% sans-serif;
+  height: 100%;
   position: relative;
 }
 
@@ -17,14 +18,18 @@ h1 {
 @-webkit-keyframes fadein {
   0% {
     opacity: 0;
-    left: 0;
-  }
-  30% {
-    left: 45%;
-    opacity: 1;
   }
   100% {
-    left: 50%;
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
@@ -40,7 +45,9 @@ h1 {
   left: 50%;
   width: 574px;
   -webkit-transition: opacity .2s ease;
+  -moz-transition: opacity .2s ease;
   -webkit-animation: fadein 1s ease-out;
+  -moz-animation: fadein 1s ease-out;
 }
 
 #login:active {
@@ -128,6 +135,7 @@ h1 {
   box-shadow: inset 0 0 15px rgba(0, 0, 0, .05), 0 0 1px #fff;
   border-radius: 50%;
   -webkit-transition: all .25s ease-in;
+  -moz-transition: all .25s ease-in;
 }
 
 .paging__button:hover {
