@@ -20,4 +20,8 @@
         }
     });
 
+    var opts = { lines: 15, length: 5, width: 4, radius: 5, corners: 1, rotate: 0, direction: 1, color: '#333', speed: 2.1, trail: 60, shadow: false, hwaccel: false, className: 'spinner', zIndex: 2e9, top: 'auto', left: 'auto' },
+    target = document.getElementById('spinner');
+    new Spinner(opts).spin(target);
+
 }());

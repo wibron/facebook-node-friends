@@ -23,6 +23,7 @@
     </div>
 
     <ul class="friends">
+        <li ng-hide="friends.length" class="friends__box box--spinner"><span id="spinner"></span></li>
         <li class="friends__box" ng-repeat="friend in friends | filter: searchFilter | orderBy: 'first_name' | startPosition: currentPage * itemsPerPage | limitTo: itemsPerPage">
             <a href="https://facebook.com/profile.php?id={{friend.id}}">
                 <img src="/images/user.png" profilepicture="{{friend.picture.data.url}}" alt="{{friend.first_name}} {{friend.last_name}}">
