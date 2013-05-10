@@ -7,7 +7,7 @@
             return Math.ceil($scope.friends.length / $scope.itemsPerPage);
         }
         $http.get('/friendlist').success(function(data) {
-            $scope.friends = data;
+            $scope.friends = data.friends;
         });
     }
 </script>

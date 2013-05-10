@@ -61,7 +61,7 @@ app.get('/friends', function(req, res) {
 
 app.get('/friendlist', function(req, res) {
     graph.get('me/friends?fields=picture,first_name,last_name', function(err, fbRes) {
-        res.send(fbRes.data);
+        res.send({friends: fbRes.data});
     });
 });
 
