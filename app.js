@@ -56,8 +56,12 @@ app.get('/auth', function(req, res) {
 });
 
 app.get('/friends', function(req, res) {
+    res.render('friends');
+});
+
+app.get('/friendlist', function(req, res) {
     graph.get('me/friends?fields=picture,first_name,last_name', function(err, fbRes) {
-        res.render('friends', { friends: JSON.stringify(fbRes.data) });
+        res.send(fbRes.data);
     });
 });
 

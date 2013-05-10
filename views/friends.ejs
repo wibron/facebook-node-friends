@@ -1,11 +1,14 @@
 <script>
-    function FriendsCtrl($scope) {
-        $scope.friends = <%- friends %>;
+    function FriendsCtrl($scope, $http) {
+        $scope.friends = [];
         $scope.currentPage = 0;
         $scope.itemsPerPage = 30;
         $scope.totalPages = function() {
             return Math.ceil($scope.friends.length / $scope.itemsPerPage);
         }
+        $http.get('/friendlist').success(function(data) {
+            $scope.friends = data;
+        });
     }
 </script>
 
