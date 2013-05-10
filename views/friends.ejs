@@ -16,6 +16,7 @@
     <ul class="friends">
         <li class="friends__box" ng-repeat="friend in friends | filter: searchFilter | orderBy: 'first_name' | limitTo: itemsPerPage">
             <a href="https://facebook.com/profile.php?id={{friend.id}}">
+                <img src="/images/user.png" alt="{{friend.first_name}} {{friend.last_name}}">
                 {{ friend.first_name }} {{ friend.last_name }}
             </a>
         </li>
