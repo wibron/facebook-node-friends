@@ -1,6 +1,19 @@
 (function() {
 
     var fb = angular.module('facebook', []);
+
+    fb.controller('FriendsCtrl', ['$scope', '$http', function($scope, $http) {
+        $scope.friends = [];
+        $scope.currentPage = 0;
+        $scope.itemsPerPage = 30;
+        $scope.totalPages = function() {
+            return Math.ceil($scope.friends.length / $scope.itemsPerPage);
+        }
+        $http.get('/friendlist').success(function(data) {
+            $scope.friends = data.friends;
+        });
+    }]);
+
     fb.directive('profilepicture', function() {
         return function(scope, element, attr) {
             attr.$observe('profilepicture', function(compiled) {
