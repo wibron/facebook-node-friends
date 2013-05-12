@@ -60,6 +60,7 @@ h1 {
 
 .container {
   margin: 0 auto;
+  padding-bottom: 1em;
   width: 40em;
   max-width: 100%;
 }
@@ -67,11 +68,11 @@ h1 {
 .search {
   display: block;
   border: 1px solid #ccc;
-  padding: .5em;
+  padding: .8em .5em;
   width: 100%;
   box-sizing: border-box;
   background: url("/images/search.png") no-repeat 3% 50% #fff;
-  font-size: 1.5em;
+  font-size: 1.3em;
   text-indent: 10%;
   margin: 0 auto;
   border-radius: .3em;
