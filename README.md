@@ -10,7 +10,7 @@ Install the npm-dependencies:
 $ npm install
 ````
 
-Then open up *settings.js* inside your favourite editor and replace **APP_ID**, **APP_SECRET** and **APP_URL** with your app's values. To prevent this configuration file from being further version-controlled you can run the update-index command from git: ```$ git update-index --assume-unchanged settings.js```
+Then open up *settings.js* inside your favourite editor and replace **APP_ID**, **APP_SECRET** and **APP_URL** with your app's values (that you obtain from [developers.facebook.com](https://developers.facebook.com/apps)). To prevent this configuration file from being further version-controlled you can run the update-index command from git: ```$ git update-index --assume-unchanged settings.js```
 
 #### Heroku setup
 
