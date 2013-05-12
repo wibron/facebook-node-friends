@@ -65,7 +65,7 @@ app.get('/friends', function(req, res) {
 });
 
 app.get('/friendlist', function(req, res) {
-    graph.get('me/friends?fields=picture,first_name,last_name', function(err, fbRes) {
+    graph.setOptions({ timeout: 3000, pool: { maxSockets: Infinity }, headers: {connection: 'keep-alive'} }).get('/me/friends?fields=picture,first_name,last_name', function(err, fbRes) {
         res.send({friends: fbRes.data});
     });
 });
