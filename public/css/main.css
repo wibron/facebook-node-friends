@@ -3,7 +3,6 @@ body {
   font: normal 100% sans-serif;
   height: 100%;
   position: relative;
-  overflow-y: hidden;
 }
 
 h1 {
