@@ -29,11 +29,7 @@ app.configure('development', function(){
 });
 
 app.get('/', function(req, res) {
-    if (graph.getAccessToken() !== null) {
-        res.redirect('/friends');
-    } else {
-        res.render('index');
-    }
+    res.render('index');
 });
 
 app.get('/auth', function(req, res) {
