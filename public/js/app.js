@@ -26,6 +26,14 @@
         };
     });
 
+    fb.directive('searchfield', function() {
+        return function(scope, element, attr) {
+            element.bind('keypress', function() {
+                scope.currentPage = 0;
+            })
+        }
+    })
+
     fb.filter('startPosition', function() {
         return function(input, position) {
             position = parseInt(position, 10);
