@@ -9,6 +9,7 @@ var config = {
     APP_SECRET: process.env.APP_SECRET || settings.APP_SECRET,
     APP_URL: process.env.APP_URL || settings.APP_URL,
     SCOPE: '',
+    SECRET: process.env.SECRET || settings.SECRET,
     PORT: process.env.PORT || 3000
 };
 
@@ -17,6 +18,8 @@ app.configure(function() {
     app.set('views', __dirname + '/views');
     app.set('layout', 'layout');
     app.use(expressLayouts);
+    app.use(express.cookieParser());
+    app.use(express.session({ secret: config.SECRET, maxAge: new Date(Date.now() + 3600000) }));
     app.use(app.router);
     app.use(express.static(__dirname + '/public'));
 });
@@ -54,6 +57,7 @@ app.get('/auth', function(req, res) {
         'client_secret': config.APP_SECRET,
         'code': req.query.code
     }, function (err, fbRes) {
+        req.session.access_token = fbRes.access_token;
         res.redirect('/friends');
     });
 
@@ -64,7 +68,7 @@ app.get('/friends', function(req, res) {
 });
 
 app.get('/friendlist', function(req, res) {
-    graph.setOptions({ timeout: 3000, pool: { maxSockets: Infinity }, headers: {connection: 'keep-alive'} }).get('/me/friends?fields=picture,first_name,last_name', function(err, fbRes) {
+    graph.setAccessToken(req.session.access_token).setOptions({ timeout: 3000, pool: { maxSockets: Infinity }, headers: {connection: 'keep-alive'} }).get('/me/friends?fields=picture,first_name,last_name', function(err, fbRes) {
         res.send({friends: fbRes.data});
     });
 });
