@@ -27,7 +27,11 @@ app.configure('development', function(){
 });
 
 app.get('/', function(req, res) {
-    res.render('index');
+    if (graph.getAccessToken() !== null) {
+        res.redirect('/friends');
+    } else {
+        res.render('index');
+    }
 });
 
 app.get('/auth', function(req, res) {
