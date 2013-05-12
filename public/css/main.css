@@ -6,13 +6,18 @@ body {
 }
 
 h1 {
-  color: #999;
+  color: #c1c1c1;
   font-weight: 200;
-  font-size: 1.8em;
-  font-family: 'Domine', serif;
-  line-height: 280px;
+  font-size: 1.3em;
+  font-family: 'Domine', serif;;
   text-align: center;
   text-shadow: 0 0 1px #fff;
+  position: absolute;
+  margin: -50px -20% -50px -20%;
+  height: 100px;
+  bottom: 20%;
+  left: 50%;
+  width: 40%;
 }
 
 @-webkit-keyframes fadein {
