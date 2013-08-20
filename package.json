@@ -13,5 +13,6 @@
     "npm": "1.2.x"
   },
   "license": "MIT",
-  "description": "facebook-app with express and fbgraph"
+  "description": "facebook-app with express and fbgraph",
+  "author": "Patrik Wibron <patrik@wibron.nu>"
 }
